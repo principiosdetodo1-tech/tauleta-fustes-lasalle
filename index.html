@@ -9,6 +9,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
         :root {
+            /* COLORS - Edita aquests valors per canviar els colors */
             --color-primary: #1a1a1a;
             --color-secondary: #8B6F47;
             --color-accent: #D4AF37;
@@ -19,68 +20,137 @@
             --color-white: #ffffff;
             --color-success: #2D5016;
             --color-discount: #C41E3A;
+            
+            /* TIPOGRAFIA */
             --font-display: 'Playfair Display', serif;
             --font-body: 'Outfit', sans-serif;
+            
+            /* MIDES - Edita per canviar espaiats */
             --spacing-xs: 0.5rem;
             --spacing-sm: 1rem;
             --spacing-md: 2rem;
             --spacing-lg: 4rem;
             --spacing-xl: 6rem;
         }
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: var(--font-body); color: var(--color-text-dark); background: var(--color-bg-light); line-height: 1.6; overflow-x: hidden; }
-
-        /* HEADER PRINCIPAL AMB IMATGE */
-        .site-header {
-            width: 100%;
-            display: block;
-            overflow: hidden;
-            max-height: 220px;
-            cursor: pointer;
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
-        .site-header img {
-            width: 100%;
-            height: 220px;
-            object-fit: cover;
-            object-position: center 30%;
-            display: block;
-            transition: opacity 0.3s;
+        
+        body {
+            font-family: var(--font-body);
+            color: var(--color-text-dark);
+            background: var(--color-bg-light);
+            line-height: 1.6;
+            overflow-x: hidden;
         }
-        .site-header:hover img {
-            opacity: 0.92;
+        
+        /* ANIMACIONS */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
-
-        @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
-        @keyframes scaleIn { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
-        @keyframes slideInLeft { from { opacity: 0; transform: translateX(-30px); } to { opacity: 1; transform: translateX(0); } }
-        @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.05); } }
-        @keyframes shimmer { 0% { transform: translateX(-100%) translateY(-100%); } 100% { transform: translateX(100%) translateY(100%); } }
-
+        
+        @keyframes scaleIn {
+            from {
+                opacity: 0;
+                transform: scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+        
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+        }
+        
+        /* NAVEGACIÓ */
         .navbar {
             background: var(--color-white);
-            padding: 1.2rem 2rem;
-            box-shadow: 0 2px 20px rgba(0,0,0,0.08);
+            padding: 1.5rem 2rem;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.05);
             position: sticky;
             top: 0;
             z-index: 1000;
+            animation: fadeInUp 0.6s ease;
         }
-        .navbar-content { max-width: 1400px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+        
+        .navbar-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
         .logo {
             font-family: var(--font-display);
-            font-size: 1.6rem;
+            font-size: 2rem;
             font-weight: 700;
             color: var(--color-primary);
             letter-spacing: -1px;
-            text-decoration: none;
-            transition: color 0.3s;
         }
-        .logo:hover { color: var(--color-secondary); }
-        .nav-links { display: flex; gap: 2.5rem; list-style: none; }
-        .nav-links a { color: var(--color-text-dark); text-decoration: none; font-weight: 500; transition: color 0.3s; position: relative; }
-        .nav-links a::after { content: ''; position: absolute; bottom: -5px; left: 0; width: 0; height: 2px; background: var(--color-accent); transition: width 0.3s; }
-        .nav-links a:hover { color: var(--color-secondary); }
-        .nav-links a:hover::after { width: 100%; }
-
+        
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            color: var(--color-text-dark);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--color-accent);
+            transition: width 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--color-secondary);
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        /* BANNER DESCOMPTE */
         .discount-banner {
             background: linear-gradient(135deg, var(--color-discount) 0%, #8B0000 100%);
             color: var(--color-white);
@@ -91,120 +161,593 @@
             position: relative;
             overflow: hidden;
         }
-        .discount-banner::before { content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent); animation: shimmer 3s infinite; }
-        .discount-banner span { position: relative; z-index: 1; }
-        .discount-text { font-size: 1.1rem; }
-        .countdown { font-size: 0.9rem; opacity: 0.95; margin-top: 0.3rem; }
-
-        .hero { max-width: 1400px; margin: 4rem auto; padding: 0 2rem; display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; animation: fadeInUp 0.8s ease 0.2s both; }
-        .product-gallery { position: relative; }
-        .main-image { width: 100%; border-radius: 20px; box-shadow: 0 20px 60px rgba(0,0,0,0.15); animation: scaleIn 1s ease 0.4s both; transition: transform 0.4s; }
-        .main-image:hover { transform: scale(1.02); }
-        .quality-badge { position: absolute; top: 20px; right: 20px; background: var(--color-accent); color: var(--color-primary); padding: 0.8rem 1.5rem; border-radius: 50px; font-weight: 700; font-size: 0.9rem; box-shadow: 0 10px 30px rgba(212, 175, 55, 0.4); animation: pulse 2s infinite; }
-        .product-info { animation: fadeInUp 1s ease 0.6s both; }
-        .product-title { font-family: var(--font-display); font-size: 3.5rem; font-weight: 700; color: var(--color-primary); margin-bottom: 1rem; line-height: 1.1; }
-        .product-subtitle { font-size: 1.3rem; color: var(--color-text-light); margin-bottom: 2rem; font-weight: 300; }
-        .rating { display: flex; align-items: center; gap: 1rem; margin-bottom: 2rem; }
-        .stars { color: var(--color-accent); font-size: 1.3rem; letter-spacing: 3px; }
-        .reviews { color: var(--color-text-light); font-size: 0.95rem; }
-        .price-section { background: var(--color-bg-cream); padding: 2rem; border-radius: 15px; margin-bottom: 2rem; border-left: 5px solid var(--color-accent); }
-        .price-label { font-size: 0.9rem; color: var(--color-text-light); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.5rem; }
-        .price { display: flex; align-items: baseline; gap: 1rem; margin-bottom: 0.5rem; }
-        .current-price { font-family: var(--font-display); font-size: 3.5rem; font-weight: 700; color: var(--color-primary); }
-        .original-price { font-size: 1.5rem; color: var(--color-text-light); text-decoration: line-through; }
-        .discount-tag { background: var(--color-discount); color: var(--color-white); padding: 0.4rem 1rem; border-radius: 50px; font-weight: 700; font-size: 0.95rem; }
-        .savings { color: var(--color-success); font-weight: 600; font-size: 1.1rem; }
-        .payment-options { font-size: 0.9rem; color: var(--color-text-light); margin-top: 1rem; }
-        .payment-options strong { color: var(--color-primary); }
-        .cta-buttons { display: flex; gap: 1rem; margin-bottom: 2rem; }
-        .btn { padding: 1.2rem 2.5rem; border: none; border-radius: 50px; font-size: 1.1rem; font-weight: 600; cursor: pointer; transition: all 0.3s; font-family: var(--font-body); text-decoration: none; display: inline-block; text-align: center; }
-        .btn-primary { background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%); color: var(--color-white); flex: 2; box-shadow: 0 10px 30px rgba(44, 24, 16, 0.3); }
-        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 15px 40px rgba(44, 24, 16, 0.4); }
-        .btn-secondary { background: var(--color-white); color: var(--color-primary); border: 2px solid var(--color-primary); flex: 1; }
-        .btn-secondary:hover { background: var(--color-primary); color: var(--color-white); }
-        .features-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin-bottom: 2rem; }
-        .feature-item { display: flex; align-items: center; gap: 0.8rem; padding: 1rem; background: var(--color-white); border-radius: 10px; transition: transform 0.3s; }
-        .feature-item:hover { transform: translateX(5px); }
-        .feature-icon { font-size: 1.5rem; }
-        .feature-text { font-size: 0.95rem; font-weight: 500; }
-        .trust-badges { display: flex; gap: 2rem; padding: 1.5rem; background: var(--color-bg-cream); border-radius: 10px; }
-        .trust-item { display: flex; align-items: center; gap: 0.5rem; font-size: 0.9rem; color: var(--color-text-light); }
-        .trust-icon { color: var(--color-success); font-size: 1.2rem; }
-
-        .specifications { max-width: 1400px; margin: 6rem auto; padding: 0 2rem; }
-        .section-title { font-family: var(--font-display); font-size: 2.5rem; font-weight: 700; color: var(--color-primary); text-align: center; margin-bottom: 3rem; }
-        .specs-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
-        .spec-card { background: var(--color-white); padding: 2rem; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.08); transition: transform 0.3s, box-shadow 0.3s; }
-        .spec-card:hover { transform: translateY(-5px); box-shadow: 0 15px 40px rgba(0,0,0,0.12); }
-        .spec-icon { font-size: 2.5rem; margin-bottom: 1rem; }
-        .spec-title { font-family: var(--font-display); font-size: 1.5rem; font-weight: 600; color: var(--color-primary); margin-bottom: 1rem; }
-        .spec-description { color: var(--color-text-light); line-height: 1.8; }
-
-        .technical-gallery { max-width: 1400px; margin: 6rem auto; background: var(--color-bg-cream); padding: 4rem 2rem; border-radius: 30px; }
-        .gallery-content { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; }
-        .technical-image { width: 100%; border-radius: 15px; box-shadow: 0 15px 50px rgba(0,0,0,0.1); }
-        .dimensions-list { list-style: none; }
-        .dimension-item { padding: 1.2rem; background: var(--color-white); margin-bottom: 1rem; border-radius: 10px; display: flex; justify-content: space-between; align-items: center; transition: transform 0.3s; }
-        .dimension-item:hover { transform: translateX(10px); }
-        .dimension-label { font-weight: 600; color: var(--color-primary); }
-        .dimension-value { font-size: 1.2rem; color: var(--color-secondary); font-weight: 700; }
-
-        .benefits { max-width: 1400px; margin: 6rem auto; padding: 0 2rem; }
-        .benefits-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
-        .benefit-card { text-align: center; padding: 3rem 2rem; background: var(--color-white); border-radius: 20px; transition: all 0.3s; position: relative; overflow: hidden; }
-        .benefit-card::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 0; background: linear-gradient(135deg, var(--color-bg-cream) 0%, var(--color-bg-light) 100%); transition: height 0.3s; z-index: 0; }
-        .benefit-card:hover::before { height: 100%; }
-        .benefit-card > * { position: relative; z-index: 1; }
-        .benefit-card:hover { transform: translateY(-10px); box-shadow: 0 20px 50px rgba(0,0,0,0.1); }
-        .benefit-icon { font-size: 3.5rem; margin-bottom: 1.5rem; }
-        .benefit-title { font-family: var(--font-display); font-size: 1.5rem; font-weight: 600; color: var(--color-primary); margin-bottom: 1rem; }
-        .benefit-text { color: var(--color-text-light); line-height: 1.8; }
-
-        .urgency-section { max-width: 1400px; margin: 4rem auto; padding: 3rem 2rem; background: linear-gradient(135deg, #FFF4E6 0%, #FFE8CC 100%); border-radius: 20px; text-align: center; border: 2px dashed var(--color-accent); }
-        .urgency-title { font-family: var(--font-display); font-size: 2rem; color: var(--color-primary); margin-bottom: 1rem; }
-        .stock-warning { color: var(--color-discount); font-weight: 700; font-size: 1.2rem; margin-bottom: 2rem; }
-        .recent-buyers { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; margin-top: 2rem; }
-        .buyer-badge { background: var(--color-white); padding: 0.8rem 1.5rem; border-radius: 50px; font-size: 0.9rem; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
-
-        .footer { background: var(--color-primary); color: var(--color-white); padding: 4rem 2rem 2rem; margin-top: 6rem; }
-        .footer-content { max-width: 1400px; margin: 0 auto; display: grid; grid-template-columns: repeat(4, 1fr); gap: 3rem; margin-bottom: 3rem; }
-        .footer-section h3 { font-family: var(--font-display); font-size: 1.3rem; margin-bottom: 1.5rem; }
-        .footer-section ul { list-style: none; }
-        .footer-section ul li { margin-bottom: 0.8rem; }
-        .footer-section a { color: rgba(255,255,255,0.8); text-decoration: none; transition: color 0.3s; }
-        .footer-section a:hover { color: var(--color-accent); }
-        .footer-bottom { text-align: center; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1); color: rgba(255,255,255,0.6); }
-
-        @media (max-width: 968px) {
-            .hero { grid-template-columns: 1fr; gap: 2rem; }
-            .gallery-content { grid-template-columns: 1fr; }
-            .benefits-grid { grid-template-columns: 1fr; }
-            .footer-content { grid-template-columns: repeat(2, 1fr); }
-            .product-title { font-size: 2.5rem; }
-            .current-price { font-size: 2.5rem; }
-            .nav-links { display: none; }
-            .site-header img { height: 150px; }
+        
+        .discount-banner::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
+            animation: shimmer 3s infinite;
         }
+        
+        @keyframes shimmer {
+            0% { transform: translateX(-100%) translateY(-100%); }
+            100% { transform: translateX(100%) translateY(100%); }
+        }
+        
+        .discount-banner span {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .discount-text {
+            font-size: 1.1rem;
+        }
+        
+        .countdown {
+            font-size: 0.9rem;
+            opacity: 0.95;
+            margin-top: 0.3rem;
+        }
+        
+        /* HERO SECTION */
+        .hero {
+            max-width: 1400px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            animation: fadeInUp 0.8s ease 0.2s both;
+        }
+        
+        .product-gallery {
+            position: relative;
+        }
+        
+        .main-image {
+            width: 100%;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+            animation: scaleIn 1s ease 0.4s both;
+            transition: transform 0.4s;
+        }
+        
+        .main-image:hover {
+            transform: scale(1.02);
+        }
+        
+        .quality-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: var(--color-accent);
+            color: var(--color-primary);
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.4);
+            animation: pulse 2s infinite;
+        }
+        
+        .product-info {
+            animation: fadeInUp 1s ease 0.6s both;
+        }
+        
+        .product-title {
+            font-family: var(--font-display);
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--color-primary);
+            margin-bottom: 1rem;
+            line-height: 1.1;
+        }
+        
+        .product-subtitle {
+            font-size: 1.3rem;
+            color: var(--color-text-light);
+            margin-bottom: 2rem;
+            font-weight: 300;
+        }
+        
+        .rating {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        
+        .stars {
+            color: var(--color-accent);
+            font-size: 1.3rem;
+            letter-spacing: 3px;
+        }
+        
+        .reviews {
+            color: var(--color-text-light);
+            font-size: 0.95rem;
+        }
+        
+        .price-section {
+            background: var(--color-bg-cream);
+            padding: 2rem;
+            border-radius: 15px;
+            margin-bottom: 2rem;
+            border-left: 5px solid var(--color-accent);
+        }
+        
+        .price-label {
+            font-size: 0.9rem;
+            color: var(--color-text-light);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+        }
+        
+        .price {
+            display: flex;
+            align-items: baseline;
+            gap: 1rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .current-price {
+            font-family: var(--font-display);
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--color-primary);
+        }
+        
+        .original-price {
+            font-size: 1.5rem;
+            color: var(--color-text-light);
+            text-decoration: line-through;
+        }
+        
+        .discount-tag {
+            background: var(--color-discount);
+            color: var(--color-white);
+            padding: 0.4rem 1rem;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.95rem;
+        }
+        
+        .savings {
+            color: var(--color-success);
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+        
+        .payment-options {
+            font-size: 0.9rem;
+            color: var(--color-text-light);
+            margin-top: 1rem;
+        }
+        
+        .payment-options strong {
+            color: var(--color-primary);
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        
+        .btn {
+            padding: 1.2rem 2.5rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-family: var(--font-body);
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+            color: var(--color-white);
+            flex: 2;
+            box-shadow: 0 10px 30px rgba(44, 24, 16, 0.3);
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 40px rgba(44, 24, 16, 0.4);
+        }
+        
+        .btn-secondary {
+            background: var(--color-white);
+            color: var(--color-primary);
+            border: 2px solid var(--color-primary);
+            flex: 1;
+        }
+        
+        .btn-secondary:hover {
+            background: var(--color-primary);
+            color: var(--color-white);
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            padding: 1rem;
+            background: var(--color-white);
+            border-radius: 10px;
+            transition: transform 0.3s;
+        }
+        
+        .feature-item:hover {
+            transform: translateX(5px);
+        }
+        
+        .feature-icon {
+            font-size: 1.5rem;
+        }
+        
+        .feature-text {
+            font-size: 0.95rem;
+            font-weight: 500;
+        }
+        
+        .trust-badges {
+            display: flex;
+            gap: 2rem;
+            padding: 1.5rem;
+            background: var(--color-bg-cream);
+            border-radius: 10px;
+        }
+        
+        .trust-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+            color: var(--color-text-light);
+        }
+        
+        .trust-icon {
+            color: var(--color-success);
+            font-size: 1.2rem;
+        }
+        
+        /* ESPECIFICACIONS */
+        .specifications {
+            max-width: 1400px;
+            margin: 6rem auto;
+            padding: 0 2rem;
+        }
+        
+        .section-title {
+            font-family: var(--font-display);
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--color-primary);
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .specs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .spec-card {
+            background: var(--color-white);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .spec-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.12);
+        }
+        
+        .spec-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .spec-title {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--color-primary);
+            margin-bottom: 1rem;
+        }
+        
+        .spec-description {
+            color: var(--color-text-light);
+            line-height: 1.8;
+        }
+        
+        /* GALERIA TÈCNICA */
+        .technical-gallery {
+            max-width: 1400px;
+            margin: 6rem auto;
+            padding: 0 2rem;
+            background: var(--color-bg-cream);
+            padding: 4rem 2rem;
+            border-radius: 30px;
+        }
+        
+        .gallery-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+        
+        .technical-image {
+            width: 100%;
+            border-radius: 15px;
+            box-shadow: 0 15px 50px rgba(0,0,0,0.1);
+        }
+        
+        .dimensions-list {
+            list-style: none;
+        }
+        
+        .dimension-item {
+            padding: 1.2rem;
+            background: var(--color-white);
+            margin-bottom: 1rem;
+            border-radius: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: transform 0.3s;
+        }
+        
+        .dimension-item:hover {
+            transform: translateX(10px);
+        }
+        
+        .dimension-label {
+            font-weight: 600;
+            color: var(--color-primary);
+        }
+        
+        .dimension-value {
+            font-size: 1.2rem;
+            color: var(--color-secondary);
+            font-weight: 700;
+        }
+        
+        /* BENEFICIS */
+        .benefits {
+            max-width: 1400px;
+            margin: 6rem auto;
+            padding: 0 2rem;
+        }
+        
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+        
+        .benefit-card {
+            text-align: center;
+            padding: 3rem 2rem;
+            background: var(--color-white);
+            border-radius: 20px;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .benefit-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 0;
+            background: linear-gradient(135deg, var(--color-bg-cream) 0%, var(--color-bg-light) 100%);
+            transition: height 0.3s;
+            z-index: 0;
+        }
+        
+        .benefit-card:hover::before {
+            height: 100%;
+        }
+        
+        .benefit-card > * {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .benefit-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.1);
+        }
+        
+        .benefit-icon {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .benefit-title {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--color-primary);
+            margin-bottom: 1rem;
+        }
+        
+        .benefit-text {
+            color: var(--color-text-light);
+            line-height: 1.8;
+        }
+        
+        /* URGÈNCIA */
+        .urgency-section {
+            max-width: 1400px;
+            margin: 4rem auto;
+            padding: 3rem 2rem;
+            background: linear-gradient(135deg, #FFF4E6 0%, #FFE8CC 100%);
+            border-radius: 20px;
+            text-align: center;
+            border: 2px dashed var(--color-accent);
+        }
+        
+        .urgency-title {
+            font-family: var(--font-display);
+            font-size: 2rem;
+            color: var(--color-primary);
+            margin-bottom: 1rem;
+        }
+        
+        .stock-warning {
+            color: var(--color-discount);
+            font-weight: 700;
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .recent-buyers {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+        
+        .buyer-badge {
+            background: var(--color-white);
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        /* FOOTER */
+        .footer {
+            background: var(--color-primary);
+            color: var(--color-white);
+            padding: 4rem 2rem 2rem;
+            margin-top: 6rem;
+        }
+        
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+        
+        .footer-section h3 {
+            font-family: var(--font-display);
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .footer-section ul {
+            list-style: none;
+        }
+        
+        .footer-section ul li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-section a {
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-section a:hover {
+            color: var(--color-accent);
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: rgba(255,255,255,0.6);
+        }
+        
+        /* RESPONSIVE */
+        @media (max-width: 968px) {
+            .hero {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .gallery-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .benefits-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-content {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .product-title {
+                font-size: 2.5rem;
+            }
+            
+            .current-price {
+                font-size: 2.5rem;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+        }
+        
         @media (max-width: 576px) {
-            .cta-buttons { flex-direction: column; }
-            .features-grid { grid-template-columns: 1fr; }
-            .trust-badges { flex-direction: column; gap: 1rem; }
-            .footer-content { grid-template-columns: 1fr; }
-            .site-header img { height: 110px; }
+            .cta-buttons {
+                flex-direction: column;
+            }
+            
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .trust-badges {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
 <body>
-
-    <!-- HEADER PRINCIPAL AMB IMATGE CLICABLE -->
-    <a href="index.html" class="site-header" title="Tornar a l'inici">
-        <img src="Gemini_Generated_Image_tas5r8tas5r8tas5.png" alt="Fustes La Salle - Tornar a l'inici">
-    </a>
-
-    <!-- BANNER DESCOMPTE -->
+    <!-- BANNER DESCOMPTE - EDITA EL TEXT AQUÍ -->
     <div class="discount-banner">
         <div class="discount-text">
-            ⚡ <strong>OFERTA PRIMERA COMPRA:</strong> 10% de descompte en el teu primer pedido!
+            ⚡ <strong>OFERTA PRIMERA COMPRA:</strong> 10% de descompte en el teu primer pedido! 
             <span class="countdown">⏰ Oferta acaba en: <strong id="countdown-timer">23:59:45</strong></span>
         </div>
     </div>
@@ -212,7 +755,7 @@
     <!-- NAVEGACIÓ -->
     <nav class="navbar">
         <div class="navbar-content">
-            <a href="index.html" class="logo">FUSTES LA SALLE</a>
+            <div class="logo">FUSTES LA SALLE</div>
             <ul class="nav-links">
                 <li><a href="#producte">Producte</a></li>
                 <li><a href="#especificacions">Especificacions</a></li>
@@ -222,19 +765,25 @@
         </div>
     </nav>
 
-    <!-- HERO -->
+    <!-- HERO / PRODUCTE PRINCIPAL -->
     <section class="hero" id="producte">
         <div class="product-gallery">
-            <img src="https://i.imgur.com/VWnR4L3.jpeg" alt="Tauleta de Nit" class="main-image">
+            <img src="https://imgur.com/VWnR4L3" alt="Tauleta de Nit" class="main-image" id="main-product-image">
             <div class="quality-badge">100% NATURAL</div>
         </div>
+        
         <div class="product-info">
+            <!-- TÍTOL - EDITA AQUÍ -->
             <h1 class="product-title">Tauleta de Nit</h1>
             <p class="product-subtitle">Elegància en roure natural amb relleu artesanal</p>
+            
+            <!-- VALORACIONS -->
             <div class="rating">
                 <span class="stars">★★★★★</span>
                 <span class="reviews">(847 valoracions) · 1.243 venudes</span>
             </div>
+            
+            <!-- PREU - EDITA ELS NÚMEROS AQUÍ -->
             <div class="price-section">
                 <div class="price-label">Preu especial primera compra</div>
                 <div class="price">
@@ -248,28 +797,60 @@
                     🚚 <strong>Nota:</strong> Costos d'enviament es calculen al finalitzar la compra
                 </div>
             </div>
+            
+            <!-- BOTONS D'ACCIÓ -->
             <div class="cta-buttons">
-                <button class="btn btn-primary" onclick="window.location.href='carrito.html'">🛒 Afegir a la cistella</button>
-                <button class="btn btn-secondary" onclick="window.location.href='contacto.html'">📞 Consultar disponibilitat</button>
+                <button class="btn btn-primary" onclick="window.location.href='carrito.html'">
+                    🛒 Afegir a la cistella
+                </button>
+                <button class="btn btn-secondary" onclick="window.location.href='contacto.html'">
+                    📞 Consultar disponibilitat
+                </button>
             </div>
+            
+            <!-- CARACTERÍSTIQUES DESTACADES -->
             <div class="features-grid">
-                <div class="feature-item"><span class="feature-icon">🌳</span><span class="feature-text">Roure 100% natural</span></div>
-                <div class="feature-item"><span class="feature-icon">🔧</span><span class="feature-text">Muntatge fàcil</span></div>
-                <div class="feature-item"><span class="feature-icon">🚚</span><span class="feature-text">Enviament disponible</span></div>
-                <div class="feature-item"><span class="feature-icon">↩️</span><span class="feature-text">Devolució 30 dies</span></div>
+                <div class="feature-item">
+                    <span class="feature-icon">🌳</span>
+                    <span class="feature-text">Roure 100% natural</span>
+                </div>
+                <div class="feature-item">
+                    <span class="feature-icon">🔧</span>
+                    <span class="feature-text">Muntatge fàcil</span>
+                </div>
+                <div class="feature-item">
+                    <span class="feature-icon">🚚</span>
+                    <span class="feature-text">Enviament disponible</span>
+                </div>
+                <div class="feature-item">
+                    <span class="feature-icon">↩️</span>
+                    <span class="feature-text">Devolució 30 dies</span>
+                </div>
             </div>
+            
+            <!-- BADGES DE CONFIANÇA -->
             <div class="trust-badges">
-                <div class="trust-item"><span class="trust-icon">✓</span> Garantia 1 any</div>
-                <div class="trust-item"><span class="trust-icon">✓</span> Pagament segur</div>
-                <div class="trust-item"><span class="trust-icon">✓</span> Producte sostenible</div>
+                <div class="trust-item">
+                    <span class="trust-icon">✓</span>
+                    Garantia 1 any
+                </div>
+                <div class="trust-item">
+                    <span class="trust-icon">✓</span>
+                    Pagament segur
+                </div>
+                <div class="trust-item">
+                    <span class="trust-icon">✓</span>
+                    Producte sostenible
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- URGÈNCIA -->
+    <!-- URGÈNCIA / ESTOC LIMITAT -->
     <section class="urgency-section">
         <h2 class="urgency-title">⚠️ Només queden 12 unitats en estoc</h2>
         <p class="stock-warning">A aquest preu no durarà gaire! Més de 50 persones estan veient aquest producte ara mateix</p>
+        
         <div class="recent-buyers">
             <span class="buyer-badge">🟢 Maria de Barcelona ha comprat fa 5 min</span>
             <span class="buyer-badge">🟢 Josep de Girona ha comprat fa 12 min</span>
@@ -277,33 +858,102 @@
         </div>
     </section>
 
-    <!-- ESPECIFICACIONS -->
+    <!-- ESPECIFICACIONS TÈCNIQUES -->
     <section class="specifications" id="especificacions">
         <h2 class="section-title">Especificacions Tècniques</h2>
+        
         <div class="specs-grid">
-            <div class="spec-card"><div class="spec-icon">📐</div><h3 class="spec-title">Dimensions</h3><p class="spec-description"><strong>Alçada:</strong> 48 cm<br><strong>Amplada:</strong> 45 cm<br><strong>Profunditat:</strong> 40 cm<br><strong>Pes:</strong> 18 kg</p></div>
-            <div class="spec-card"><div class="spec-icon">🪵</div><h3 class="spec-title">Materials</h3><p class="spec-description">Roure natural amb acabat en fusta fosca amb relleu artesanal. Tiradors metàl·lics amb acabat en llautó envellit.</p></div>
-            <div class="spec-card"><div class="spec-icon">📦</div><h3 class="spec-title">Característiques</h3><p class="spec-description">2 calaixos amb guies metàl·liques<br>Sistema soft-close<br>Capacitat: 5 kg per calaix<br>Capacitat tapa: 20 kg</p></div>
-            <div class="spec-card"><div class="spec-icon">♻️</div><h3 class="spec-title">Sostenibilitat</h3><p class="spec-description">Fabricat amb fusta 100% natural de boscos gestionats de manera sostenible. Acabats lliures de tòxics.</p></div>
-            <div class="spec-card"><div class="spec-icon">🧼</div><h3 class="spec-title">Manteniment</h3><p class="spec-description">Neteja fàcil amb drap suau. No requereix tractaments especials. Evitar exposició directa al sol.</p></div>
-            <div class="spec-card"><div class="spec-icon">🔨</div><h3 class="spec-title">Muntatge</h3><p class="spec-description">Inclou instruccions pas a pas i totes les eines necessàries. Temps de muntatge: 30-45 minuts.</p></div>
+            <!-- EDITA AQUESTES TARGETES -->
+            <div class="spec-card">
+                <div class="spec-icon">📐</div>
+                <h3 class="spec-title">Dimensions</h3>
+                <p class="spec-description">
+                    <strong>Alçada:</strong> 48 cm<br>
+                    <strong>Amplada:</strong> 45 cm<br>
+                    <strong>Profunditat:</strong> 40 cm<br>
+                    <strong>Pes:</strong> 18 kg
+                </p>
+            </div>
+            
+            <div class="spec-card">
+                <div class="spec-icon">🪵</div>
+                <h3 class="spec-title">Materials</h3>
+                <p class="spec-description">
+                    Roure natural amb acabat en fusta fosca amb relleu artesanal. Tiradors metàl·lics amb acabat en llautó envellit.
+                </p>
+            </div>
+            
+            <div class="spec-card">
+                <div class="spec-icon">📦</div>
+                <h3 class="spec-title">Característiques</h3>
+                <p class="spec-description">
+                    2 calaixos amb guies metàl·liques<br>
+                    Sistema soft-close<br>
+                    Capacitat: 5 kg per calaix<br>
+                    Capacitat tapa: 20 kg
+                </p>
+            </div>
+            
+            <div class="spec-card">
+                <div class="spec-icon">♻️</div>
+                <h3 class="spec-title">Sostenibilitat</h3>
+                <p class="spec-description">
+                    Fabricat amb fusta 100% natural de boscos gestionats de manera sostenible. Acabats lliures de tòxics.
+                </p>
+            </div>
+            
+            <div class="spec-card">
+                <div class="spec-icon">🧼</div>
+                <h3 class="spec-title">Manteniment</h3>
+                <p class="spec-description">
+                    Neteja fàcil amb drap suau. No requereix tractaments especials. Evitar exposició directa al sol.
+                </p>
+            </div>
+            
+            <div class="spec-card">
+                <div class="spec-icon">🔨</div>
+                <h3 class="spec-title">Muntatge</h3>
+                <p class="spec-description">
+                    Inclou instruccions pas a pas i totes les eines necessàries. Temps de muntatge: 30-45 minuts.
+                </p>
+            </div>
         </div>
     </section>
 
-    <!-- GALERIA TÈCNICA -->
+    <!-- GALERIA TÈCNICA AMB DIMENSIONS -->
     <section class="technical-gallery">
         <h2 class="section-title">Vista Tècnica Detallada</h2>
+        
         <div class="gallery-content">
-            <img src="https://i.imgur.com/dpPDWtl.jpeg" alt="Vista tècnica" class="technical-image">
+            <img src="https://imgur.com/dpPDWtl" alt="Vista tècnica" class="technical-image" id="technical-image">
+            
             <div>
                 <h3 class="spec-title">Informació Detallada</h3>
                 <ul class="dimensions-list">
-                    <li class="dimension-item"><span class="dimension-label">Amplada total</span><span class="dimension-value">45 cm</span></li>
-                    <li class="dimension-item"><span class="dimension-label">Profunditat</span><span class="dimension-value">40 cm</span></li>
-                    <li class="dimension-item"><span class="dimension-label">Alçada</span><span class="dimension-value">48 cm</span></li>
-                    <li class="dimension-item"><span class="dimension-label">Alçada calaixos</span><span class="dimension-value">18 mm</span></li>
-                    <li class="dimension-item"><span class="dimension-label">Pes total</span><span class="dimension-value">18 kg</span></li>
-                    <li class="dimension-item"><span class="dimension-label">Capacitat màxima (tapa)</span><span class="dimension-value">20 kg</span></li>
+                    <li class="dimension-item">
+                        <span class="dimension-label">Amplada total</span>
+                        <span class="dimension-value">45 cm</span>
+                    </li>
+                    <li class="dimension-item">
+                        <span class="dimension-label">Profunditat</span>
+                        <span class="dimension-value">40 cm</span>
+                    </li>
+                    <li class="dimension-item">
+                        <span class="dimension-label">Alçada</span>
+                        <span class="dimension-value">48 cm</span>
+                    </li>
+                    <li class="dimension-item">
+                        <span class="dimension-label">Alçada calaixos</span>
+                        <span class="dimension-value">18 mm</span>
+                    </li>
+                    <li class="dimension-item">
+                        <span class="dimension-label">Pes total</span>
+                        <span class="dimension-value">18 kg</span>
+                    </li>
+                    <li class="dimension-item">
+                        <span class="dimension-label">Capacitat màxima (tapa)</span>
+                        <span class="dimension-value">20 kg</span>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -312,23 +962,56 @@
     <!-- BENEFICIS -->
     <section class="benefits" id="beneficis">
         <h2 class="section-title">Per què triar FUSTES LA SALLE?</h2>
+        
         <div class="benefits-grid">
-            <div class="benefit-card"><div class="benefit-icon">🚚</div><h3 class="benefit-title">Enviament Ràpid</h3><p class="benefit-text">Lliurament a domicili en 5-7 dies laborables dins d'Espanya amb seguiment en temps real.</p></div>
-            <div class="benefit-card"><div class="benefit-icon">🔄</div><h3 class="benefit-title">Devolució 30 Dies</h3><p class="benefit-text">No estàs satisfet? Et retornem els diners sense preguntes durant els primers 30 dies</p></div>
-            <div class="benefit-card"><div class="benefit-icon">🛡️</div><h3 class="benefit-title">Garantia 1 Any</h3><p class="benefit-text">Cobertura completa contra defectes de fabricació amb servei de substitució immediat</p></div>
-            <div class="benefit-card"><div class="benefit-icon">🌱</div><h3 class="benefit-title">100% Sostenible</h3><p class="benefit-text">Fusta natural de boscos certificats amb gestió responsable i acabats ecològics</p></div>
-            <div class="benefit-card"><div class="benefit-icon">💳</div><h3 class="benefit-title">Pagament Flexible</h3><p class="benefit-text">Paga en 3 terminis sense interessos o utilitza qualsevol mètode de pagament segur</p></div>
-            <div class="benefit-card"><div class="benefit-icon">📞</div><h3 class="benefit-title">Atenció Premium</h3><p class="benefit-text">Equip d'atenció al client disponible de 15:00 a 19:30, de dilluns a divendres</p></div>
+            <!-- EDITA AQUESTES TARGETES -->
+            <div class="benefit-card">
+                <div class="benefit-icon">🚚</div>
+                <h3 class="benefit-title">Enviament Ràpid</h3>
+                <p class="benefit-text">Lliurament a domicili en 5-7 dies laborables dins d'Espanya amb seguiment en temps real. Costos d'enviament calculats al finalitzar la compra.</p>
+            </div>
+            
+            <div class="benefit-card">
+                <div class="benefit-icon">🔄</div>
+                <h3 class="benefit-title">Devolució 30 Dies</h3>
+                <p class="benefit-text">No estàs satisfet? Et retornem els diners sense preguntes durant els primers 30 dies</p>
+            </div>
+            
+            <div class="benefit-card">
+                <div class="benefit-icon">🛡️</div>
+                <h3 class="benefit-title">Garantia 1 Any</h3>
+                <p class="benefit-text">Cobertura completa contra defectes de fabricació amb servei de substitució immediat</p>
+            </div>
+            
+            <div class="benefit-card">
+                <div class="benefit-icon">🌱</div>
+                <h3 class="benefit-title">100% Sostenible</h3>
+                <p class="benefit-text">Fusta natural de boscos certificats amb gestió responsable i acabats ecològics</p>
+            </div>
+            
+            <div class="benefit-card">
+                <div class="benefit-icon">💳</div>
+                <h3 class="benefit-title">Pagament Flexible</h3>
+                <p class="benefit-text">Paga en 3 terminis sense interessos o utilitza qualsevol mètode de pagament segur</p>
+            </div>
+            
+            <div class="benefit-card">
+                <div class="benefit-icon">📞</div>
+                <h3 class="benefit-title">Atenció Premium</h3>
+                <p class="benefit-text">Equip d'atenció al client disponible de 15:00 a 19:30, de dilluns a divendres</p>
+            </div>
         </div>
     </section>
 
     <!-- FOOTER -->
     <footer class="footer" id="contacte">
         <div class="footer-content">
+            <!-- EDITA LA INFORMACIÓ DEL FOOTER -->
             <div class="footer-section">
                 <h3>FUSTES LA SALLE</h3>
                 <p>Mobles d'elegància natural per a llars amb personalitat. Qualitat artesanal amb consciència sostenible.</p>
             </div>
+            
             <div class="footer-section">
                 <h3>Ajuda</h3>
                 <ul>
@@ -339,32 +1022,62 @@
                     <li><a href="contacto.html">Preguntes freqüents</a></li>
                 </ul>
             </div>
+            
             <div class="footer-section">
                 <h3>Contacte</h3>
                 <ul>
-                    <li>📧 <a href="mailto:info@fusteslasalle.cat">info@fusteslasalle.cat</a></li>
+                    <li>📧 <a href="/cdn-cgi/l/email-protection#98feedebecfdebf4f9ebf9f4f4fdb6ebfdfefdfcd8f4f9ebf9f4f4fdb6fbf9ec"><span class="__cf_email__" data-cfemail="137566606776607f7260727f7f763d6076757677537f7260727f7f763d707267">[email&#160;protected]</span></a></li>
                     <li>📱 +34 973 35 XX XX</li>
                     <li>📍 La Seu d'Urgell - La Salle</li>
                     <li>🕐 Dll-Div: 15:00 - 19:30</li>
                 </ul>
             </div>
         </div>
+        
         <div class="footer-bottom">
             <p>&copy; 2025 FUSTES LA SALLE. Tots els drets reservats. | Política de privacitat | Termes i condicions</p>
         </div>
     </footer>
 
-    <script>
-        let hours = 23, minutes = 59, seconds = 45;
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+        // COMPTADOR DE TEMPS - Edita els valors inicials aquí
+        let hours = 23;
+        let minutes = 59;
+        let seconds = 45;
+        
         function updateCountdown() {
             seconds--;
-            if (seconds < 0) { seconds = 59; minutes--; }
-            if (minutes < 0) { minutes = 59; hours--; }
-            if (hours < 0) { hours = 23; minutes = 59; seconds = 59; }
-            document.getElementById('countdown-timer').textContent =
-                String(hours).padStart(2,'0') + ':' + String(minutes).padStart(2,'0') + ':' + String(seconds).padStart(2,'0');
+            
+            if (seconds < 0) {
+                seconds = 59;
+                minutes--;
+            }
+            
+            if (minutes < 0) {
+                minutes = 59;
+                hours--;
+            }
+            
+            if (hours < 0) {
+                hours = 23;
+                minutes = 59;
+                seconds = 59;
+            }
+            
+            const hoursStr = String(hours).padStart(2, '0');
+            const minutesStr = String(minutes).padStart(2, '0');
+            const secondsStr = String(seconds).padStart(2, '0');
+            
+            document.getElementById('countdown-timer').textContent = 
+                `${hoursStr}:${minutesStr}:${secondsStr}`;
         }
+        
         setInterval(updateCountdown, 1000);
-    </script>
-</body>
-</html>
+        
+        // IMATGES DEL PRODUCTE (Incrustades directament a l'HTML)
+        window.addEventListener('DOMContentLoaded', () => {
+            const mainImage = document.getElementById('main-product-image');
+            mainImage.src = 'data:image/png;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/4gHYSUNDX1BST0ZJTEUAAQEAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADb/2wBDAAUDBAQEAwUEBAQFBQUGBwwIBwcHBw8LCwkMEQ8SEhEPERETFhwXExQaFRERGCEYGh0dHx8fExciJCIeJBweHx7/2wBDAQUFBQcGBw4ICA4eFBEUHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh7/wAARCAE+AQkDASIAAhEBAxEB/8QAHQAAAQUBAQEBAAAAAAAAAAAAAQACAwQFBggHCf/EAFUQAAEDAgIFBAoNCAkEAgMAAAEAAgMEEQUhBhIxQVETYXGxBxQiMnKBkaGywRUjMzQ2QlJzdHWSs9EkJic3YmSCohYlQ0RTVGPw8Qg1o8KE4YOT0v/EABkBAQEBAQEBAAAAAAAAAAAAAAABAgQDBf/EACcRAQEAAgICAgEEAgMAAAAAAAABAhESMSFRA0ETBAUyYSJxgZHw/9oADAMBAAIRAxEAPwD0ogiUF851ggUUCVAECkkUAKBRTSgSCKagRTSiUEAQKKCKCBRQQAoFEoFFAoHYiUEAQSKRUAKBRQQAoFEoIEgimoEUEUEUkCkgUCSQKWSDoECkSgVpgk0ooFQBAoppQJAolBAECiSgUAQRKaUCKBSQRSKBRQQBApFAopFBIoFAskCkSgVAkEkkAQKJ2oHagCBRQQApFIoFFJDYkgUCQy5kkL8yDoSgUigtMAULpFAqBIJEoEoEUEiU0lASm3SJTS4AZkIHJpKw8Z0u0cwjXFfi9LHIw6ro2v15AfBbc+ZZbOyXoY829l7dNPIP/VFdekVzUGneiM3e49Rt8N+p12Vpulmi7u90iwo//LZ+KDaQWQ3SbRx5szHsMJ5qpn4q5BiWH1HveuppfAlB6kFoppRJFr3CYXtPxh5UU5NJSuOKF0CKGSV0LqA3QSQKBIEpFAoFdAlJBFJBIoFAtyBKSF0CSshdLPnQdCU0px2JpVYNKBRKwdOtJKXRPRirx6sgmnhptQGOK2s4ueGDaQNrhfmVG2Smkrz1jHZ/xCo124VhMNGwiwdMTK8c4tYeUFcZi/ZI0gxU/lmN1bm2tqsdybSOcNABV40eocY0lwHCWk4hi1JAR8QyAu+yM1xWN9mPR2k5RuH0tXiEje9NhHG7xnMfZXnU4xRk91LnzsJ9STcUpXbJgPFZONXw+sYz2Y9IKnWbh1PSUDCO5dqGR48bu5P2VxmM6UaQYtcYhi9XOw56hkIZ9kZeZc6MRphtlaOkgIjEaYnKoh8Tx+KaXws6266RdcXDgoRVRuHcuBRErdl0DyXXyAQJd/wgZOfylDlQN7ftBA4k/wDCZ3xz6keWAPfN+0gJwdjh5UDmudGbteWnmyUrK6tYfa6upaeaQhQ8pltCAfxt5Cg0Y9IcegyixvE4vBq5B1FWG6YaUsOWkmKnwquR3WVjlwIyTC83trAeMIOhZp1pazZj1cel9+tTx9kfTSLvMbn/AIo43dbSuW1uJv02QuD8keNB2cfZU03b32Ltk8Klh9TArUfZc0ub30tI/wAKAeqy4MniWkIOtvIHjTQ+hjsx6VNtenw13TE71OViDsz6R39twzCXDmZID6ZXzJrm323T9YA5i3iTQ+sRdmit/tsDp3H9mZzesFTDs0u36PtP/wAu3/qvj0k8Ubdd7w0ftGyzqjHKdgIgY6V3E5AJMdm9PvEXZniJ9s0deBxbWA/+ikk7OGjMAPbVDXNePiRarz1hecKnE6qouHSarfktyCk0coPZnSDDsHbNyJrqqKmEurrBmu8N1rXF7X2LU+P2zcnt29whvQ2CyRK8mxOxNzSJSug6QppRKCrBhXJ9lnRyt0s0DxDAcPlgiqakxFjpiQwasjXG5AJ2NO5dYUwqy6H5/Yk+ooKqpp5qSQ9ryOY57JGEHVNiRnfdwVFuKMexsgoq4NcA4ONO4gg78gtbTL/u2L5/3ib0isMVJpcLppDGXgxt+NawDb+pdEZPfjFGwWfyzPChePUmjGsNJ99NHSCOtFmIVA209SzoufUnOxJlu7dUDpjcqgNxTD3bK2D/APYFI2upT3tZEeiQKs/EKJx7oj+IN/FQuqMMec2Uh8KBp9SG2mypYR3MzT0ORMrnDN91kPiwx9zyFL4oQPUmchhI+JTj+It6iE0bbTZZGd48t6DZONbVjZUSfaKxO1sPd7nYeDUO/wD6QNEwd7PVNHNO5NQ8ts4jWjZUy/aKXspXNGUzvHn1rE7Xtsq6y/zgPWE10Uw7yuqR0hp9SahtvjGa8D3UfZH4Jwx6vG1zSOdoXOAVg/v5/iiCcTWjZVQnphP4pxhuujGkNYPixHpafxT26SVA76KM+ULli/EAe/pHfwuCIlrR30VO7oeR6lOEOVdUNJpTtpwf4z+CcNJjsNJlxEn/ANLkjUVQ20kZ6Jh6wh2zONtE7xSNKcIcq7Jmk0PxoZR0W/FP/pPSjbFP5B+K4k1T99HOOgA+tJtWC8M7XqATuLE/HDnXdN0noiLubMDuBaM/IVXqsdmkJFOwRDicz+C5Js2s9jOSlBLxtZz39S0w4nZkFOEi8qsSTPkeXyyOe7i4poffYPGVEOO9PBsiJBntN10XY1P6RNGvral+9aubBXRdjQ/pE0b+tqX71qXoj2ehdC6BNlzPYkroXQ8QUHTlNKJKaVpg0qN21PKjdtQeCtM8sYxcfvE3pFc5Xn+o6X5segV0WmpHszjH0mb0nLnamz8HpGnYYwP5CumMunwTDGVMT6qqljhpYhdz5HWaM99szexAAsTY5ixKbX41ozTOjpY46iVo7ybkYnD0S77V+lQ41UxgUWENmfHDyZqJHh1sz3pPGzQ0W43WJFHeNsk9LPXyXJaIhazb7zY2OQNyDtGW0jz1yem9L2J0zHwnEMOlErNrrAXHS0ZfZAI4FUKypg9i6eoiPt5lLJYnAG/QejO/OtWhpoDQtr8MqnsncPbKV4u3o1uPiWLWUobjdMwNLIpnAtYfi6xsfIescExy862mU8b00X4fh1PhfbuJxACYWjjay73bDlfZcEHWzFiLXJOrjMZQ1jZjBSRwxhuswFt7gbrq9pnUSPraWHk2tayFoDG5AvcNZ1hw1iT5lDh1PVj8lhp5HPaMw1t+54m2wZrcu5tmzV0omBsEoimj1S4XY5rto8SfV0sPL07WxyGOWzdYyOydbYc+nyK5BNTGvnoKgMbK4arZNXvXA7M9g5skypDoXyQSWbJGBLG4DviCNnA+oK8vOk4mY7hEGElvf3yDy031TwNwqlTHUxYe2pZVSNDpRGxpIu698xlzedamOGaukpoG59syB7znk3aesKKopZK7FHwEk01D3A5IhzQRkTrOIvvtvNlMcvG6ZY+dRQNM9kfKSVsovsbckuPMLqVlLiPIcrHKwjLKwcQDxzy6bJ0NVHFTTRMaHubIbzap1rbAPWq9EXmp12ymEAd8b25lrdqakNe6vZIGPlY1xbrAaoB224cyLzXxus4Rk/tG3qT8TDo5WVIFjtPAZgHzkeddN2vSRQyY9jNg2QNbDCG99llkduRBvmALDMk6s5TWzjd6cq19c4awpo3Ab2hxTDUT3ziBPN/yruI442aTXjwpvJuPfOHrNyfKmPjZM0EsEbrX1QSQPHuV37hr1VXtqbZ2sc95cLK1JGYaxjCbuDnAnxKprFrhG8WIcOtX6w3xFp367vWqh7PfEPhH0Srt1Rb7vD4R6irt81mh4Ke0k/751EDcJ4UVK3eui7Gn6xNGvral+9aucvmV0fY0/WLo19bU33rUvQ9m3QKBKbcrlewlDNAlC5UHUlNKJTSVtg0qN21PconbUHgzTQ/11jIt/eZvSK5yqcBgtIeEQ9ArotNcsdxofvU3pFc3VkewdMP9IH+QrpjK7jzzLS09ZC2xuGTNB2apOqOfuXfyngrBoGYm0zukIihjY2BuubXLcyB4QJJ57bspIKSpFNJViMOpvjtIJuLnxbQd4N7kb1UbW4YxjpWUbppwb8mKh3J3/abqi/lvzrHnqN+O6pYfBNLiE7mRTGZoBPJvOsNt87Z7M7q3LVtmdE6e/L0kge4ltiW77jiNvPZVaakrnMmrpXzROkJkc5vc3zOzjnfIIOjBcHuqA94Nh3NrDn3nyK3HaS6SVZe/G6eecOuYI9QBtzyhAFrH9qwRmra2V01HQEshjdeaQC5keAbkk+Pzo0/tgpyCC+GZtyXX7nWBvffsJ8iz61upJFhwzA1pZSN9zYD1+TgpPPirfHlYwOihc41Ek0N5XCxe/Veeg7ir+NUwhm1C7lmgHkpLC5Fs2nnHnVeko5podaKEva0272/m2m3Mq9RNJHdvdNy7wnLxcDzcOCuUtvhMbJGxhIcyWGoHcywUbTE4nVs92V9bda2t0BV8Wpp6HDO0oSYw4kyBoJkPG+y199891hayiGLPgpmuh90axuqT3rHXPddPDnsdyzK3tmQONSKrZcFw1RbiRsWZjbVuUg4LLyUMmpAZIxfWAHnvuPOlWRmOndJTg8jKNbPg3a0/7zy50qCZ9JcxPsHZPBzDgeIWpTwR1EL4ZBqxcq17eF9V17c2Xj2r0yuvLGM3NIsPo/ZOrpKZrWmItD365yFiDY82RvzAncjpfWUk1YGTSl8cTSyGMnYPlED4xNyTxJSjmNNTvjp38k+oswO17asY357DtzHynBZuJtp6SH2uaCRxbdxa0HO2e25PTdYk8tXpUpOVfyzmwA04szW1QPLbft8if7XqCKaKR0jcs3WAHQr8WIvp8Jp6WnDGGU+3SO26tmnV8Z1ieIDeAWdTROmr2xwkZus03sAL7TzDPxL0l8sfRVcLmiJwGrqvAsdu0ZefzK5WH+sW+G71pmPA0slLQvzmaGmbO5DzbLzFOq869nhuPWk8wvhK33eLwvUVc2Zqk0+3ReEeoq4MwehSoduIT2lRjO6cDv5lBNvXSdjT9Y2jf1rTfetXNAro+xl+sXRv61pvvWpelj2ZdNJzSO1NJXI9hPMhc8ECUroOpKaUSUCtsGOUbtqkconoPBenB/ODGR+8zek5c1Wn+pKXniHoLpNNvhDjP0qb0iuarr+wdIBmeSbYfwLpjLRxCvqX0VE0F76eG5kiae+fltG86tvsFVcDMcdW+asjuyR5fqN2cw3ePZ4lPTuY9znx09QS/vgYyWnpaRn5VNHi1DQPM0tNq1d7tdyslweJBI61nzPprxftexF0stOKzFJjh8Lj7XTsaLk3sG6twSdgJOrbZnayxnz0s8l4oKoMIuGl7XWHG21Ua2okxHETPLI10bI9SNtu5blbIDYBl5FadiEtIyJlNGA8988WBcSSSSd//CTHRy2jkZqXLSC120m9j0jd1FVJeWc+er1Xcp3DSLZ5X6zYeNXjUOcCZYA4uzJBBJ6roQVDWPIc27XjVc2QbW8Cf9kK+Ynhp4TisrsLZS08vJOAJLgLXzJAPHbfx8yyKmukxHDjWTt1Z4niMu2h43Z8xt4jzqaSko2WcK2OBsgvZzyDbxA383QquJyxSQQ4Zh4eYtYEuII1nbMgc95zNr5bgsyS3a23WqtaOGA1pnqgG08EJlPSGOdfpIZqg7ta4zCnZi8GLNlL6NkDWjuXNAaR4xndVcShbhlZHROkZIyWHUe5hyBIILc94BPNdRRUdfHCW0rTKyQnuo4y7p2DLoNirlJTG2KNM+88rDfVGfcjmz/Fbb55BSRUscWtIGkPvwBI8QsLX4E7LKCmooqFrmyvaJni5c5wuB0fF2Wzz4XzCEszJxyceqIdpuc3WGV99uA3LV1WZuK00NPK722qcZL/ANmLjrGfRko56JrmSMifrEtIs42cMuB/FSSSVAyiqQxo3AWATYqhplNNUsa2+Ye0bzvIG3p2punj7RQtYxghqY76vHLP/dvNsV6nxGnw9hfSwDlyCA4kDygOcfJa++6rVLZGAxSgvsLsde9ht27xt6uKEWJR01DJF2uHTPFrlt07h0o+2TzmeZxc8uuSdt7rSqvf7fCd61TrxLCacysMUj3WLeFsrZ/7FirU3v4E8XLTKRvusXhnqKtgqowe2xeEeoq2Cs0PYi05JjDbNPaoJAuk7GX6xdG/rWm+9auauuk7Gf6xdG/rSm+9al6WPZRKaSkUN65HuRKF0CUsuKDrCmuTimlbeZpUTtqkco3oPBGm/wD3/GvpU/pFYuGVNRDR00raKuaeRbaRsJItbaCFsacH84cb+lTj+YrKw25oKMA58iy32QumdM/Z78XI91lqWjg+N49SaMZphl2xTn5yNpPnC2psGxiCcwBjXTtOq6OCobI5p3ghjiQeYp9Ro7pU2HlZsDxZ0fynUkhHlss88fa6rDOIwybJ4Dfc1wHUjytE4Z0FE53y9W560Z4TFIWT0MQeNokp2384VWWlpJPdMPpx0R6vVZa2h5jpy67ohq/JZYepOmhoHR2jppmO4mdzvMqwo6Fuyl1fBlkH/smupqb4stZH4NQfXdXaCylgvaWaUN4My67p76WkjF6WaVrv9RoPUoeRa3va2rHhOa7ramPhm2txFx5nQNPUQgfJRmqlElRWtFtgDCR1hF8FRCb0tW13H4t+nPNQ2q9gqad3hREdRQPbu80rhzOcPUmgDR1Uj+Ueaa/Tn5gg+jn2ti1/BeUterH91YfBnHrASdNO3vqSX+FzXetVDRFKxw5SF7gPivkBB8RKjeyaWdr+RkY1oIAaL9WwKUVT99PVN/8Axk9RSdXtYLOkmZ4THfggMtU4ERugvFbY64IPMdoSp6qngcJGglwNw10gt6F/IQedMFdTuN+VivxOXWpfZAOGqKiIjgC1TS7Ua2V9bWiolkBsRYDIWGwAbgr05/LQRxem2iJ1+TaTYi4J2eVIG9Q0kbQ4qolb7pF4R6irWwKow+2xeEeoq3xWaHN2JzTmUxpyTmqCTgF0vYx/WJo59a0/3jVzO8Lpexgf0iaO/WlN961L0seyCULpXzTdq5HuN0ECj41B1xTSnFMK9Hma5RvUhUbkV4G05+EeN3/zc/pOWThR/JKK20RR9QWtpx8I8b+lz+k5ZGFH8lo/mo+oLp+mPtt6VzzRaV4uI5Xs/L6jvXf6rln+yWIDLtuYgbi66taYEf0rxi/+fn+8csm+W9Yw/jGr204NIMZpQDBXzx2+Q4t6lLLpZjcw1amsNQOEvddaxHHmTS7pV44+k3WyNIZQe7oMOeN47UiF/wCVJ+N0Mo9t0foCeID2+i4LEuLf/abfO6cYcq1212Dvf7fg7Wt4Qve0+VznIVNRo25toMPr43cXVjSPJyayXFRuOacYcq1qWHRyVxNVX19PzR07ZfOXNTKujwUutQ4rO8cainEfovcVkOcBfPMJocDwV4/2m/6bkGD0Mses7SPDWO+QWTk/d2UD8EqHSasFRRyt+WalkY/nLSsrnGSRJ4lNX2bnpru0dxIC7DSz80NXHKfI1xTP6O6Qd8MGxPVHxu1n28tlltkkb3sjh0FAyyawcXkkbCc01l7N4+liqpK6lyqqeaL5xhHWqro2vzMLHDwAtKl0hxukYG0uK1cDf9OUt6kXaSY69+tNilVUb7TTOkHkcSE3kf4sd0EG+mj8TbJkDGMr26jQ28Tr2J4hdBi9bLiOB01VURUzZWzyR60UDIy4arDmWgX271gRm9ey/wDhO6wtY5WzyzZJ0usPtkXhnqKt8VTZ7pF4Z6irYKlDhvRCaDmi1QSg2IXS9jA/pF0c+tKf71q5i66bsXn9Imjn1pT/AHjUvSx7HKRSJQuuN7kUEigg7AppTimlejzNKjdtUhUb8iivAunWWkmN2/zc/pOWPhRApqO/+FH1Ba+nR/ObHB+9z+m5Y2F509H81H1BdP0x9tfTH4V4va3v+f7xyyfGtTS+/wDSzGM/7/P965ZJvv29Cxh/GNXsnHoTLhOJzUbj0LbJE33JusN/nSvfmQ6EBHduAAzJsvRmg/8A0/YNJgMVXpPXVr6+Rgc6Cmka1kN/ikkEucONwNu3avPmDVYoMXo618YkbTzslLD8YNcDbzL2ZoNiU2LxtdFUtNNNHrNe3PWBGRC+P+7fqfl+HHGfHdb+3d+h+HD5Lbl9PKXZw7HU+hFWyqw+rfWYTLIWNe5oEkL9zXkZEEDI5b8hv+fUdW51g45r1P8A9UNHS4V2OK9tVMHzVEsUcAdtc7lA42/ha5eTaVpMlwur9s+fP5/g5Z9y6eP6z4sfj+XWLba7WF0vMmRX1Bmnkngu9zARzjyJuadfcggHPdNd0JxTTbmQaT8tGYNnvqT0WLJj9/s+bd1har/gxB9Kl9GNZDD+Xs+ad1hZw+zJdafbovCPUVaBzVNvusfSeoq2CrUPBzKTSmjaUR6lBKF03YvP6RdHPrSn+8auXuun7F/6xtHPrOn+8al6WdvZCHjSS3LjdAHYkluSug7AppTigV6PMwqNykKjeg8B6dfCbGz++T+m5Y2E+4Um72tnUFsadfCXG/pc/pOXOUdZTMpqdrp2se2JgIJtY2C6Z08/t2ukej2O1uOYriFJg2ITUclZNIydlM8xvaZHEEOtYgjO65mWGVkpicxzZBkWkZjxIwYpM060Nbc80l1ow6UaQwsDIcXrYm8I5nMHmssSZSab3KyZIntPdNI6QoiCDexHiW87SjEn++Y6Srd8qrp2Tn+cFKLSGNwIrcIw+pb8lsDYR/4w1N5ek8OfcQSmrbkxPCJJB/UNJTx7+RkmLvK+QjzJ1VNom6IchQYs2XeXVjA3yckT51d30antgErrdCeyVpXofEIMKrI30wJLYZ2B7W34bxxteyz6Wl0YmjJqMXrqV+5rKNsvnMjepV/YzDppy2nxmBkfy6iNzD5Ghyxnjh8k4547n+lxuWF3jdDp7pfj+m+IMrNIa7tl0QIija0NjjB4NGXj25Bc42JrTk1dHUaOhrb0+L4ZUn9iRzfTa1Mbozib260TaWXmjq4nHyBxWsb8eGMxx8T/AKTKZZXd8sZoyRGQWnLo9jUYJfhdZYbxA4jy2VGWkqojaWnlYf2mkLUyl6qasQmxQPSi5jxtaQmHWG26qCU02SvfbdNcqNOX4M0+X96l9GNZDff7Pm3dYWtL8Gaa/wDmpfRjWQ33835t3WFnAyW25Sx+F6irQzVRvusfheoq0DmrUPBR3joTE5qgkXTdi0/pG0d+s6f7xq5cbV0/YtP6RtHPrOn+8al6WdvZI2oobklxugksuCSVuhB2BKaVX7ej+QfKka2P5BW9saTkKN6iNdF8g+VMdWxnLUPlTZp4I07P5zY4P3uf03LGpnufRU4eQ4CFmTswBqjitjTog6SY2797n9JywYj+QR/MN9FdU6edXa7D5IXmCswxkTxtZJThjx5gVTFFSNvaja08Q946iunl0nx3DMUqm0OJTwASu7x1t6gm0pxSeXlawU1Y/jUQtlP8wKxMstLZi5s0kV7tlq28zZ7geUFIwOt3FdMzwo2u/BdJJpFDK21TgWGyc7IhF6FlGzE8Be49s4GWj93me0/zFyvLL0cZ7c9ydQBZtTA8/twkdRTD223aKZ/gvcOsLfkfozNLZkOIUzD8Z0zZCPFqN60Kuj0bLR2li9c552iakaxo8YkJ8yvP3E4+q58uqBmaXL9mZp9YQD3kX7Vqhbfydx5rro24BQOpuVZpPhRkt7jqz63l5O3nUMGjmITkmOow0NGwvxCBhPQHPB8yfkxONc+amEGxkLDwc1zfUntq27GVbPFItn+j2kHKFkGHVdRb41NGZW/abcLPxHD62kdq19E+J3CaKx84VmWN+zjYZHU1LSHNlfcbCDdX26R4/HFyTcXrgz5ImcB1rGdTwkXdTR9IbbqQEMYGXKs8GRyWS9pLY26XSXE6cn3rOTtNRTRzE+N7SmOxtss/K1eF0FRnfV5Pkm+SLVWKWEHuZ5h4RDvUkRIBlO08zoh6ipwxXlW9U4rhFSA2TAYKUb+1ZZAfK9z+pBs2jEjNU0OJwu+Watj/ADCNvWsActvMDvG4epK8++Bp6JB60/HP/U51sYpPhww2CjoJp5dSV8jzLEGW1g0ACzjfvTnltWLHnXM+bd1hOL3jbTzeIA9RTYXB1c3J4Ijd3zSN44rWOOozbtbafbY/C9RVi6rD3WPwvUVPdQSA5otOSYCnNKCS66bsW/rH0c+s6f7xq5cFdN2L3W7ImjjjuxKn+8Cl6WdvZqKq9uRj4jku3o/kFcW3QspZqqa5nyD5UO3mfIKbHQWQTyCmlaQ0po2hOQsbhB4U04+EWNfSp/ScsGL3hF8w30Vu6cfCPG/pc3puWDFftCP5geiuydPGtLGyfZar+ed1qpnwsrWNE+y9Vt91d1qpkTms49Rb2TunyJptfck4gZW8qYHEnKyqEQgRY8ETrbSbdCY4n5SoDgelMu9ubXEdBRunMinmNoopJXcGtJ6k6Q109Q4WdM93MTdXqPSDHKKPUpMVq6dvCOUt6liyVIY8tfcEbiE9kofmClm+yXTfh0rxhtzUTR1199ZGJ/TumM0gDp9eswnDahn+G2mZC3/xBp86xsillwU4Y+l5X22KvFcHqZBbR6mo2b+15pdY+N73DzJ00uikkYEVLisEm9z6lkg8gjb1rDIQPSnCHKtyOi0ckZf2aq438H0Q1fKJCfMmDBqKU+04/h/MHiRp9C3nWIR40DfoTjfZynpqYthM+GxxSvnpp4pSQx8EweLi1wbbDmNvFZTT+XM+bd1ha0/wVpN/5XN6Max2e/WfNnrCuG9eUyWmnu4+n1FWLqsPdWeF6iproh5OSc0qO+ScDZBKDsXSdjM/pB0e+soPvAuYB6l0vYzP6QdH/rKD7wLN6WdvXRKBKF0CVwuo66XjTLo3/wB3UHaFNspCEDZerzRkIb08pu8dKK8H6b/CPGvpc/plYMR/IY/mW+it7Tf4R419Ln9MrAit2lH8yPRXZj08K0sb/wC7VdsvbndapX6QreNZYtV3/wAV3WqZ43Wceo1exLsswo8iciQnE55JpOe1aQC48xCY7PcnE86aURcwKh9k8cocN5URCqqGQmQi4ZrOAvbfa69raJUuA4To43DMKpIKangjtqtAu7i5x2kneSvEeH1ctBXwVsBAlgkbIwkXFwbher+w7j2C6RQipjqI3yBvtkL3DWiJ3Eevevhfvc+S442fxfT/AG7huy9vj3/UfolhfIHSfCadlO9kgZVMjbZjw42D7bjcgc918Ro3kP1b5L05/wBVGO4HTYDJozh08EtfVSMMzI3A8ixpD7u4EkNsOcrzTDBqOuV2/tWXyZfppz/4/wBOb9dMZ83+K6wktSTW5AI3X0XKRIG0poJKJsRtQGR6UQnWAzzTC5F6GVkGrMfzWpfpc3oxrIjzrW/Nu6wtaf4L0n0ub0Y1kM9+t8A9YUxXJY+OzwvUVLdQk90zp9RUl1USXRBUYKIKglaV0nY1P5/4B9YwemFzAK6PsbO/P7AfrCD0wpl0s7euNdHXVXlOdLX5187brWddHX6VW5RHlE2PopCFgkhdezyAhN3hOJTd6K8G6cfCTG/pc/puWHTappoQ8Ejk2g2Nty29OD+ceN/Sp/TcsdsVNkb1LBYWayUWHRrNJ867J08a6A4vgNXO99fgAia8kk0dQ8PJPPIXjzKOJuilTVFrpMSw6Dc92rUu8gEYWGYm3OrVPtwdCHEeMOHUmmKQDKWneOcuafJqkedZ4T6XlW2cJwaoq+So8fY2L/FrIDF5mF5TZdHJeX5KkxLDawfLZUCNv/k1VhlkzRcw6w4skYfMSD5k0mRg13RVDG/K5J1vKBZON9nKemxNo1jbH6rcPkm54CJR5WEhZ9XQV1KdWppZoTwkjI61XbW2NhVgHgX2WlDpBjkMPJQYpVti+S2UgeYprKHhllrhkR5kLuY7WY4tPEZFbf8ASnEzTmCWOhmadrpKOJ7/ALTmkpQ45h7ad0VRo3h0zj/bF0oeOgNeG+ZN5T6NT2557b3J2nim2GxdBT1Oi7o3Cpw7EuUOx7Ktga3+Hkyf5kI6XRmS4OK18bj3odRt1R0u5S/8qc9dxOPqsACxSzC3XYJQudaLSLDHE96y0wcen2vVHlTKjRrEIrESUEgd3upXQlzuhutreZXnPs41iFAkrWqtHMepouWnwevji2iR1O8MI8K1lmOjkabFpaedWZS9VLLDOhNO3YnEG+d0CqjVn+C1Jb/NzejGsdvvxvzbusLXn+C1J9Km9GNY7D+VtP8ApnrCmK5J3d8zwvUU66jd3zOn1FOuqh90gcky+SN0RICum7GMUs+n2CiGMvLKyOR1tzWu1nHxAFcs3Wc4NaC4k2AG9fT+xZBPhHKTgATziznWza3gCvP5MuMbwm6++iVES865GkxWosNaS6vw4i8jM3Xz9Ot0Ik50uUWPHXEp/bqD7KUCnEIFe7yMKG9OKag8Fabn848bH71P6blktJ1RnfJamnB/OPGh+9zek5CDAcSnii7WZDUuewEMhnY9+z5Ide/iXVuSeXlrbMJvuTXdFlcrcLxKjfqVWH1cDuD4i3rCpG7cjfxhWWXoC/QlrW5ki64QLgd5RD3zSOj5Nz3OZ8km4UJZA7vqaAniGAHyhLosgSN+xUB0URyAlb4Mp9d0zkxunkHS1rvwTiR/ylYbrptEYZJc+2xEftNc3quhqzXtybHDi2QeuyfeyBOW1XYYde9jBMOcM1h5rpoqGsdbluTcPlEt61JmiXvAtrOtwugLayoL2uZUuc5ubTrXstJ+lOkL6cU02K1csA2RSSlzfIcljyBj++jjdzlgJTOTiAsGavO1xHUVLjjezdnTbbpDMY+Slw/DJW8e042u+0Gg+dKLFsJOVRo/TEbzHNK0+dxHmWGYxbKSYHpB6whqvA91BP7Uf4FT8eJzrXxnEKCpooaWgo5aaOOR8hD5eUuXBoyyFh3PPtWMz3235s9YRAl3iJx5nEepBgf200uZq9wfjA7wtTHU1Et2mee6b0+oo3TX98zp9RRQK6IuSANpTV0+iWBOqJG1U7DqjvQVnLKYzdWTdW9EcBJLaqpb3W1oO5fQ8JgbGRYKrR04YwNDbBa9GyxC4887lXTjjpow7ArcZICrxNyGSsxt5l5Np4nFS6x4BMiZzKbV5lkfeSUxxCRQK6HkBUbjZOKZIg+d6ZdjfRLHTIZ8DomSPJc6SJhic4naSWEX8a+X452B2mR0mG4m+PO4Y/MD1r0LOy5JUD41ZnlDjK8vv7Fen+DymXCsSka4b4J3Rk+MFYtTgHZDw6pfPPhjayR3fPnpo6gnxyNK9bOhbwULoGHIgHxK8/cTj6eNZ24hSTulxHRGnke7vtaKVoHQGOAHkWe+bAw49sYViMTnbQ2qaGt6AY7nyr2jUYdSygiSnieDxaCsiu0P0frL8vhNM6/7AV/JPRxryG6DR1xHJ4pXtLtjX0TbN6XCTPxBKfCaUFop8dw2oL+9a3lGkdJcwAeVemcS7Euh9Xc+xwicd7DZc3iPYJwKW5pauohO6+a1PkntON9PhNXo7ikDmN1aadz+9bTVUUxPiY4lVMQwnFKAhtdh1VSk7OVhcy/lC+v4h2Bq+O5oMXaTuDxZYlT2LuyDhh1qKpe8t2GOYhamf9s3H+ny4hw2tI8SaeZd7iOC9kKnN6/C31pA76anZKfK4XWNWSVUbCyu0Tpw/e9sUsZ8jXW8y1Mqmo5o7ECVsVNRgDog32LrqWb4zu2g5v2SwHzpTU2jslO3tTFqts575tTSBjB/Ex7ifIry9xNMe+W5NWzJgcL2NNFjOG1bztYJHRavSZQwIP0axmw7Xpe3Ad9HI2ot08mSnPFeNY1uZA8ytV2H11C/UrKWandwlYWnzqsQRtC1LtnRpHQm/wBq3wT6k4pv9q3oPqVQ53fM6fUimu75vT6itPAsMkxGqDQDyYPdFS3RrdW9F8GfX1DZZG2iad+9fTKClbFG1jWgAZBQ4Ph8dNAxkbAABZbdNAbbFx/Jnyrpwx1Agj2LRpY9mSVPTONslo09MRYWXja9NFFGeCtRsPBTQ0x4K3FTG2xZVXjj5lLyauR0x2qXtY8Ag+uk5ppKO/egV0PECo3qQhRvUVVkAuonBTSbVC5BGQExzQpSmOCm1RlqYWhS2QsoISzmSLBwUpB50CEEDoxbYmGG+5WSOKBCKqPp2u3A+JVKnCqOdtpqaF4/aYCtTVS1RYoORr9CNHKsHlsJpzfbZllzWJdh/RGpuW0JhJ3sK+oFgKaWXVmWU+01Hw6v7A+EvuaSvniJ+VnZc9XdgnFYtbtLFGP8LJekDGLbE10a1Plyn2nCPLjux12R8HgdDh9ZUCHe2CdzQfECsaqwrTqihdDV4NFUA7ZJqGKZ/wBpzS7zr1y6EcFG+mY4d00EdCv5d9w4eq8ZTSmGB0NdojAZN83tzHeQO1fMsWvfQufF2pS1EDwHcpykweDstYaoI37SV7aqsFw+cETUcD78WArIq9BtGqjOTCKa/Myy1j8sn0zfjteOqCklrauOGJpJLs+YL6poxgYpKdrGsztcmy+zQdjnReCQyQYZFG47S0K/DolhkXeRWss/J8vLpcMNdvm9FhzjbuT5FsUmFPPxCu8jwKlZ3rAp2YbG21mheHl6uPp8LItdq0IcPI+KukbQtHxQpW0gteymjbBjorblYZSW3LZFM3gnCnGdgmjbLZS22hSdr8y0hCEeRCaHYJpTyMk0i69nmamPzTyExw3IIH7VE4DyKdzbqMhQQkBN1VMQm2UVEWppapi1NKCIt4ppyKlI3purxRURN0tVSho4bkCLBQRWzSLVLYXQLQgi1Ui0BSkWTSLIIg0JpClI2JhFlFR6t0HM4KW3nKGqghLQlqqUNQAQRFg2oBgClIGxINubII7DaAkGqXVATT1oGhuae1o2IC3kTmoFqI6o4JzczZHegbqcyWoOCkAujqjgEH//2Q==';
+            
+            const technicalImage = document.getElementById('technical-image');
+            technicalImage.src = 'data:image/png;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/4gHYSUNDX1BST0ZJTEUAAQEAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3
